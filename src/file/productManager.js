@@ -48,8 +48,9 @@ export default class ProductManager {
     }
     getProductById = async (id) => {
         try {
+            console.log(id)
             const productos = await this.leerArchivo()
-            const productId= productos.findIndex(pro => id === pro.id)
+            const productId= productos.findIndex(pro => parseInt(id.pid) === pro.id)
 
             if( productId=== -1 ) {
                 return {"status" : "error", "msg":'producto no encontrado'}

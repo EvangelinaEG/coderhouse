@@ -23,7 +23,7 @@ const main = async () =>{
 main()
 
 // trae todos los productos
-app.get('/api/products', async (req, res) => {
+app.get('/products', async (req, res) => {
     let limit = req.query.limit? req.query.limit : ''
     const result = await Products.getProducts(limit)
     if(  result.status == "error" ) return res.status(404).send({status: 'error', error: result.msg })
@@ -31,25 +31,23 @@ app.get('/api/products', async (req, res) => {
 })
 
 // enpoint para crear un producto
-app.post('/api/products',  async (req, res) => {
+app.post('/products',  async (req, res) => {
     const result = await Products.addProduct(req.body)  
     if(  result.status == "error" ) return res.status(404).send({status: 'error', error: result.msg })
     res.status(200).send({ status: 'success', payload: result })
 })
 
 // endpoint para traer un producto por id
-app.get('/api/products/:uid', async (req, res)=>{
-    const {uid} = req.body
-    const result = await Products.getProductById({uid})
+app.get('/products/:pid', async (req, res)=>{
+    const {pid} = req.params
+    const result = await Products.getProductById({pid})
     if(  result.status == "error" ) return res.status(404).send({status: 'error', error: result.msg })
     res.send({status: 'success', payload: result})
     
 })
 
-//Endpoint para acceder a una cantidad de productos delimitado por limit
-
 // Endpoint para actualizar un producto
-app.put('/api/products/:pid', async (req, res) => {
+app.put('/products/:pid', async (req, res) => {
     const { pid } = req.params
     const userToUpdate = req.body
     const result = await Products.updateProduct({ pid }, userToUpdate)
@@ -58,7 +56,7 @@ app.put('/api/products/:pid', async (req, res) => {
 })
 
 // endpoint para eliminar un producto
-app.delete('/api/products/:pid', async (req, res) => {
+app.delete('/products/:pid', async (req, res) => {
     const { pid } = req.params
     const result = await Products.deleteProduct({pid})
     if(  result.status == "error" ) return res.status(404).send({status: 'error', error: result.msg })
