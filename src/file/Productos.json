@@ -1,0 +1,38 @@
+[
+	{
+		"title": "Teclado Generico",
+		"description": "Teclado inalambrico para computadora generico",
+		"price": "20000.00",
+		"thumbnail": "assets/img/teclado_generico.jpg",
+		"code": "123456",
+		"stock": "100",
+		"id": 1
+	},
+	{
+		"id": 2,
+		"title": "Teclado ",
+		"description": "Teclado inalambrico para computadora generico",
+		"price": "30000.00",
+		"thumbnail": "assets/img/teclado_generico.jpg",
+		"code": "123454",
+		"stock": "50"
+	},
+	{
+		"title": "Teclado Generico",
+		"description": "Teclado inalambrico para computadora generico",
+		"price": "20000.00",
+		"thumbnail": "assets/img/teclado_generico.jpg",
+		"code": "123458",
+		"stock": "100",
+		"id": 3
+	},
+	{
+		"title": "Teclado ",
+		"description": "Teclado inalambrico para computadora generico",
+		"price": "30000.00",
+		"thumbnail": "assets/img/teclado_generico.jpg",
+		"code": "123460",
+		"stock": "50",
+		"id": 4
+	}
+]
