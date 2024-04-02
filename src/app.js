@@ -8,7 +8,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 // http://localhost:8080  /
-app.get('/', (req, res)=>{
+app.get('/', (req, res)=>{    
     res.status(200).send('<h1>Products Manager</h1>')
 })
 
@@ -24,7 +24,8 @@ main()
 
 // trae todos los productos
 app.get('/api/products', async (req, res) => {
-    const result = await Products.getProducts()
+    let limit = req.query.limit? req.query.limit : ''
+    const result = await Products.getProducts(limit)
     if(  result.status == "error" ) return res.status(404).send({status: 'error', error: result.msg })
     res.send(result)
 })
@@ -44,6 +45,9 @@ app.get('/api/products/:uid', async (req, res)=>{
     res.send({status: 'success', payload: result})
     
 })
+
+//Endpoint para acceder a una cantidad de productos delimitado por limit
+
 // Endpoint para actualizar un producto
 app.put('/api/products/:pid', async (req, res) => {
     const { pid } = req.params

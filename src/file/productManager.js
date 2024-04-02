@@ -14,9 +14,10 @@ export default class ProductManager {
         }
     } 
 
-    getProducts = async () => {
+    getProducts = async (limit) => {
         const productos = await this.leerArchivo()
-        return {"status" : "success", "msg":  productos }
+        const nuevolistado = limit === ''? productos : productos.slice(0, limit) 
+        return {"status" : "success", "msg":  nuevolistado }
     }
 
     addProduct = async producto => {
